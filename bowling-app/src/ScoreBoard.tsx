@@ -7,21 +7,18 @@ export default function ScoreBoards(props: any) {
     return (
         <div className="scoreboard">
             <table>
-        <thead>
-            <td>Player </td>
-          <td colSpan={21}> Score Board</td>
-          <td>Total </td>
+                <thead>
+                    <td className="blackText">Player </td>
+                    <td className="blackText" colSpan={21}> Score Board</td>
+                    <td className="blackText">Total </td>
        
-    </thead>
-    <tbody>
-        <PLayerSCoreBoards PlayerName={playerList[0]} PlayerSCore={scoreList[0]} />
-        <PLayerSCoreBoards PlayerName={playerList[1]} PlayerSCore={scoreList[1]} />
-   
-
-    </tbody>
-</table>
-            
-       </div>
+                </thead>
+                <tbody>
+                    <PLayerSCoreBoards PlayerName={playerList[0]} PlayerSCore={scoreList[0]} />
+                    <PLayerSCoreBoards PlayerName={playerList[1]} PlayerSCore={scoreList[1]} />
+                </tbody>
+            </table>
+        </div>
     );    
 }
 
@@ -36,7 +33,7 @@ function PLayerSCoreBoards(props: any) {
 
     return (
         <tr className="scoreboard">
-            <td scope="row">{PlayerName}</td>
+            <td scope="row" className="blackText">{PlayerName}</td>
             {Score}
             <td>No</td>
         </tr>
