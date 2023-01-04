@@ -37,10 +37,24 @@
   }
 }
 
-td, th {
-  border: thin solid #6495ed;
-;
-  }
+table {
+  border-collapse: collapse;
+  width: auto;
+  border: 2px solid black;
+  color: red;
+}
+
+th, td {
+  text-align: center;
+  padding: 8px;
+  border: 1px solid black;
+  color: red;
+}
+
+.blackText {
+  color: black;
+}
+
 /* .scoreboard{
   display: flex;
   flex-direction: row;
