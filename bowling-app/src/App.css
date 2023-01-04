@@ -39,8 +39,12 @@
 
 td, th {
   border: thin solid #6495ed;
-;
+ 
+
   }
+td {
+    width:15px;
+   }
 /* .scoreboard{
   display: flex;
   flex-direction: row;
