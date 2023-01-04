@@ -6,8 +6,9 @@
       "dom.iterable",
       "esnext"
     ],
+    "noImplicitAny": false,
     "outDir": "src/build",
-    "allowJs": true,
+    "allowJs": false,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
