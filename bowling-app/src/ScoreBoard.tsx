@@ -8,9 +8,13 @@ export default function ScoreBoards(props: any) {
         <div className="scoreboard">
             <table>
                 <thead>
+                    
+                    <tr>
                     <td className="blackText">Player </td>
                     <td className="blackText" colSpan={21}> Score Board</td>
                     <td className="blackText">Total </td>
+                    </tr>
+                    
        
                 </thead>
                 <tbody>
@@ -22,13 +26,13 @@ export default function ScoreBoards(props: any) {
     );    
 }
 
-function PLayerSCoreBoards(props: any) {
+export function PLayerSCoreBoards(props: any) {
     const PlayerSCore = props.PlayerSCore;
     const PlayerName = props.PlayerName;
 
     //return un tableau des scores
-    const Score = PlayerSCore.map((score: any) =>
-        <td>{score}</td>
+    const Score = PlayerSCore.map((score: any,index:any) =>
+        <td key={index}>{score}</td>
     );
 
     return (
