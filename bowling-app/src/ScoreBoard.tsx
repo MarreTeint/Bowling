@@ -1,4 +1,11 @@
 import React from "react";
+/** 
+ * @author Leborgne Kevin 
+ * @version 1.0
+ * @description Génere le tableau de score des participants
+ * @param props Liste des participants et liste des scores
+ * @returns Tableau de score des participants
+*/
 export default function ScoreBoards(props: any) {
     const [playerList, setPlayerList] = React.useState(props.playerList);
     const [scoreList, setScoreList] = React.useState(props.scoreList);
@@ -8,7 +15,7 @@ export default function ScoreBoards(props: any) {
         <div className="scoreboard">
             <table>
                 <thead>
-                    
+
                     <tr>
                     <td className="blackText">Player </td>
                     <td className="blackText" colSpan={21}> Score Board</td>
@@ -23,14 +30,22 @@ export default function ScoreBoards(props: any) {
                 </tbody>
             </table>
         </div>
-    );    
+    );     
 }
 
+
+/**
+ * @author Leborgne Kevin 
+ * @version 1.0
+ * @description Génere la ligne du tableaux de score correspondant aux participant et à son score donnée en paramètre  * 
+ * @param props Nom et score du participant
+ * @returns Ligne du tableau de score correspondant au participant et à son score
+ */
 export function PLayerSCoreBoards(props: any) {
     const PlayerSCore = props.PlayerSCore;
     const PlayerName = props.PlayerName;
 
-    //return un tableau des scores
+   
     const Score = PlayerSCore.map((score: any,index:any) =>
         <td key={index}>{score}</td>
     );
