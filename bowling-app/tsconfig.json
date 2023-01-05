@@ -6,9 +6,9 @@
       "dom.iterable",
       "esnext"
     ],
+    "noImplicitAny": false,
     "outDir": "src/build",
     "allowJs": false,
-    "noImplicitAny": false,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -21,11 +21,7 @@
     "isolatedModules": true,
     "noEmit": false,
     "jsx": "react-jsx"
-  },
-  "exclude": [
-    "node_modules",
-    "src/build"
-  ],
+  }
   "include": [
     "src"
   ]

@@ -71,4 +71,5 @@ export default function ScoreManager(props) {
                     }
                     console.log(scoreList);
                 } }, { children: "Valider" }))] })));
+
 }
