@@ -26,4 +26,5 @@ function PLayerSCoreBoards(props) {
         return _jsx("td", { children: score });
     });
     return (_jsxs("tr", __assign({ className: "scoreboard" }, { children: [_jsx("td", __assign({ scope: "row", className: "blackText" }, { children: PlayerName })), Score, _jsx("td", { children: "No" })] })));
+
 }
