@@ -63,6 +63,7 @@ export default function ScoreManager(props: any) {
                     }
                     else{ //round 10
                         if(lance == 2 && player == 1){
+                            document.getElementById("quilles")?.remove(); //end game
                             document.getElementById("quillesupdate")?.remove(); //end game
                         }else if (lance == 2){
                             setPlayer(1);
@@ -84,7 +85,6 @@ export default function ScoreManager(props: any) {
                 }else{
                     alert("Score invalide")
                 }
-                console.log(scoreList);
             }
             }>Valider</button>      
        </div>

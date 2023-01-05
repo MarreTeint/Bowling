@@ -69,7 +69,5 @@ export default function ScoreManager(props) {
                     else {
                         alert("Score invalide");
                     }
-                    console.log(scoreList);
                 } }, { children: "Valider" }))] })));
-
 }
