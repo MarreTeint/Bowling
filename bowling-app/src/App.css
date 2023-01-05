@@ -39,9 +39,12 @@
 
 table {
   border-collapse: collapse;
-  width: auto;
+  width: 65%;
+
+  margin:auto ;
   border: 2px solid black;
   color: red;
+
 }
 
 th, td {
@@ -54,3 +57,4 @@ th, td {
 .blackText {
   color: black;
 }
+

@@ -1,4 +1,5 @@
 import React from "react";
+import ScoreBoard from "./ScoreBoard";
 
 
 export default function ScoreManager(props: any) {
@@ -20,8 +21,9 @@ export default function ScoreManager(props: any) {
     const[round, setRound] = React.useState(1);
     const [lance, setLance] = React.useState(0);
     const [player, setPlayer] = React.useState(0);
-    return (
+    return (        
         <div className="scoreManager">
+             <ScoreBoard playerList={playerList} scoreList={scoreList} />
             Au tour de {playerList[player]}<br></br>
             Tour n°{round} | Lance n°{lance+1}<br></br>
             <select id = "quilles">
