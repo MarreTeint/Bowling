@@ -2,14 +2,14 @@ import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import React from "react";
 import ScoreBoard from "./ScoreBoard";
 export default function ScoreManager(props) {
-    const [playerList, setPlayerList] = React.useState(props.playerList);
+    const [playerList] = React.useState(props.playerList);
     const [scoreList, setScoreList] = React.useState(props.scoreList);
     const updateScore = (player, lance, score) => {
         var newScoreList = scoreList;
-        if (score == 10 && lance % 2 == 0) {
+        if (score === 10 && lance % 2 === 0) {
             newScoreList[player][lance] = 'X';
         }
-        else if (score + scoreList[player][lance - 1] == 10) {
+        else if ((score + scoreList[player][lance - 1] === 10) && (lance === 1)) {
             newScoreList[player][lance] = '/';
         }
         else {
@@ -25,45 +25,45 @@ export default function ScoreManager(props) {
                     var score = document.getElementById("quilles");
                     var scoreValue = parseInt(score.value);
                     var numlance = 2 * round - 2 + lance;
-                    if (round < 10 && lance == 1 && (scoreValue + scoreList[player][numlance - 1]) <= 10 || round == 10 || lance == 0) {
+                    if ((round < 10 && lance === 1 && (scoreValue + scoreList[player][numlance - 1]) <= 10) || (round === 10) || (lance === 0)) {
                         updateScore(player, numlance, scoreValue);
                         if (round < 10) {
-                            if (scoreValue == 10 && lance == 0) {
+                            if (scoreValue === 10 && lance === 0) {
                                 setLance(0);
-                                if (player == 1) {
+                                if (player === 1) {
                                     setRound(round + 1);
                                 }
                             }
                             else {
                                 setLance((lance + 1) % 2);
                             }
-                            if (player == 1 && lance == 1) {
+                            if (player === 1 && lance === 1) {
                                 setRound(round + 1);
                             }
-                            if (lance == 1 || lance == 0 && scoreValue == 10) {
+                            if ((lance === 1 || lance === 0) && (scoreValue === 10)) {
                                 setPlayer((player + 1) % 2);
                             }
                         }
                         else { //round 10
-                            if (lance == 2 && player == 1) {
+                            if (lance === 2 && player === 1) {
                                 (_a = document.getElementById("quilles")) === null || _a === void 0 ? void 0 : _a.remove(); //end game
                                 (_b = document.getElementById("quillesupdate")) === null || _b === void 0 ? void 0 : _b.remove(); //end game
                             }
-                            else if (lance == 2) {
+                            else if (lance === 2) {
                                 setPlayer(1);
                                 setLance(0);
                             }
-                            if (lance == 1 && (scoreList[player][numlance - 1] == 'X' || scoreList[player][numlance] == '/')) {
+                            if (lance === 1 && (scoreList[player][numlance - 1] === 'X' || scoreList[player][numlance] === '/')) {
                                 setLance(2);
                             }
-                            else if (lance == 1 && player == 1) {
+                            else if (lance === 1 && player === 1) {
                                 (_c = document.getElementById("quillesupdate")) === null || _c === void 0 ? void 0 : _c.remove(); //end game
                             }
-                            else if (lance == 1) {
+                            else if (lance === 1) {
                                 setPlayer(1);
                                 setLance(0);
                             }
-                            else if (lance != 2) {
+                            else if (lance !== 2) {
                                 setLance((lance + 1) % 2);
                             }
                         }
