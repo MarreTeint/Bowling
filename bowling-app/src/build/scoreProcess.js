@@ -63,3 +63,9 @@ export function ScoreListToScore(Soreliste) {
     }
     return secondPass;
 }
+export default function scoreProcess(ScoreListe) {
+    let score = new Array(10);
+    let pins = ScoreListToScore(ScoreListe);
+    score = scoreFromPins(pins);
+    return score;
+}

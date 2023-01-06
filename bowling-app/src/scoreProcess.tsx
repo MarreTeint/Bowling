@@ -89,12 +89,15 @@ export function ScoreListToScore(Soreliste:any) {
 
     return secondPass;
 
-
-
-
-
   
 }
+
+export default function scoreProcess(ScoreListe:any) {
+    let score:number[] = new Array(10);
+    let pins:number[] = ScoreListToScore(ScoreListe);
+    score = scoreFromPins(pins);
+    return score;
+  }
 
 
 
