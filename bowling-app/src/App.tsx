@@ -17,13 +17,11 @@ const scoreList = [
 
 function App() {
 
-
-
   return (
     <div className="App">
     {// TODO : SORTIR LE SCOREBOARD DU SCOREMANAGER
   }
-    
+
       <ScoreManager playerList={pLayerList} scoreList={scoreList} />
      
     
