@@ -5,7 +5,9 @@ import ScoreManager from "./build/ScoreManager";
 const pLayerList = ["Player 1", "Player 2"];
 
 //const scoreList = ;
-//array de 21 space par joueur
+//array de 21 0 par joueur
+
+
 const scoreList = [
   [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
   [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "]

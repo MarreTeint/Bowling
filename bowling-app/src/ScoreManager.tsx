@@ -7,16 +7,18 @@ export default function ScoreManager(props: any) {
     const [scoreList, setScoreList] = React.useState(props.scoreList);
 
     const updateScore = (player: number, lance: number, score: number) => {
-        var newScoreList = scoreList;
+        console.log("ici")
+        var newScoreList = scoreList;       
         if(score === 10 && lance%2 === 0){
             newScoreList[player][lance] = 'X';
-        }else if((score + scoreList[player][lance-1] === 10 )&& (lance===1)){
+        }else if(score + scoreList[player][lance-1] === 10 && (lance%2)===1){
             newScoreList[player][lance] = '/';
         }else{
             newScoreList[player][lance] = score;
         }
+
         setScoreList(newScoreList);
-        
+        console.log(scoreList)
     }
 
 
@@ -48,9 +50,10 @@ export default function ScoreManager(props: any) {
             
                
                 
-                if((round < 10 && lance === 1 && (scoreValue + scoreList[player][numlance-1]) <= 10) || (round === 10 )|| (lance === 0)){
-
+                if(round < 10 && lance === 1 && scoreValue + scoreList[player][numlance-1] <= 10 || (round === 10 )|| (lance === 0)){
+                    console.log(lance)
                     updateScore(player, numlance, scoreValue);
+
 
                     if(round<10){
                         if(scoreValue === 10 && lance === 0){
@@ -64,20 +67,23 @@ export default function ScoreManager(props: any) {
                         if(player ===1 && lance === 1){
                             setRound(round+1);
                         }
-                        if((lance === 1 || lance === 0 )&& (scoreValue === 10)){
+                        if(lance === 1 || lance === 0 && scoreValue === 10){
                             setPlayer((player+1)%2);
                         }
                     }
                     else{ //round 10
+                        
                         if(lance === 2 && player === 1){
+                           
                             document.getElementById("quilles")?.remove(); //end game
                             document.getElementById("quillesupdate")?.remove(); //end game
+                            
                         }else if (lance === 2){
                             setPlayer(1);
                             setLance(0);
                         }
 
-                        if(lance === 1 && (scoreList[player][numlance-1] === 'X' || scoreList[player][numlance] === '/')){
+                        if(lance === 1 && scoreList[player][numlance-1] === 'X' || scoreList[player][numlance] === '/'){
                             setLance(2);
                         }else if(lance === 1 && player === 1){
                             document.getElementById("quillesupdate")?.remove(); //end game
