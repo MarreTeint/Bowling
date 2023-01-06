@@ -17,8 +17,17 @@ test('test du systeme de calcul de score', () => {
   const rolls4:number[] = [8, 1, 0, 9, 2, 8, 10, 6, 3, 7, 0, 5, 2, 10, 0, 6, 2, 7];
   const expected_score4:number[] = [9, 18, 38, 57, 66, 73, 80, 96, 102, 111];
 
-  const rolls5:number[] = [8, 1, 0, 9, 2, 8, 10, 6, 3, 7, 0, 5, 2, 10, 0, 6, 2];
+  const rolls5:number[] = [8, 1, 0, 9, 2, 8, 10, 6, 3, 7, 0, 5, 2, 10, 0, 6];
   const expected_score5:number[] = [9, 18, 38, 57, 66, 73, 80, 96, 102, NaN];
+
+  const rolls6:number[] = [8, 1, 0, 9, 2, 8, 10, 6, 3, 7, 0, 5];
+  const expected_score6:number[] = [9, 18, 38, 57, 66, 73, NaN, NaN, NaN, NaN];
+
+  const rolls7:number[] = [8, 1, 0, 9, 2, 8, 10, 6, 3];
+  const expected_score7:number[] = [9, 18, 38, 57, 66, NaN, NaN, NaN, NaN, NaN];
+
+  const rolls8:number[] = [8, 1, 0, 9, 2, 8];
+  const expected_score8:number[] = [9, 18, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN];
 
 
   expect(scoreFromPins(rolls1)).toStrictEqual(expected_score1);
@@ -26,18 +35,9 @@ test('test du systeme de calcul de score', () => {
   expect(scoreFromPins(rolls3)).toStrictEqual(expected_score3);
   expect(scoreFromPins(rolls4)).toStrictEqual(expected_score4);
   expect(scoreFromPins(rolls5)).toStrictEqual(expected_score5);
-
-
-//   expect(scoreFromPins(rolls1)).toBe(expected_score1)
-//   expect(scoreFromPins(rolls1)).toBe(expected_score1)
-
-
-
-//   console.assert( == expected_score1)
-//   console.assert(scoreFromPins(rolls2) == expected_score2)
-//   console.assert(scoreFromPins(rolls3) == expected_score3)
-//   console.assert(scoreFromPins(rolls4) == expected_score4)
-//   console.assert(scoreFromPins(rolls5) == expected_score5)
+  expect(scoreFromPins(rolls6)).toStrictEqual(expected_score6);
+  expect(scoreFromPins(rolls7)).toStrictEqual(expected_score7);
+  expect(scoreFromPins(rolls8)).toStrictEqual(expected_score8);
 
 
 });
