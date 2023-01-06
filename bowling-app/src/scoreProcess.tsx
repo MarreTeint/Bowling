@@ -48,4 +48,54 @@
   
     return score;
   }
+
+export function ScoreListToScore(Soreliste:any) {
+    let firstPass:number[] = new Array();
+    //copie ScoreListe by replacing " " by 0, "X" by 10 and "/" by 10 - previous roll
+    for (let i = 0; i < Soreliste.length; i++)
+    {
+      for (let j = 0; j < Soreliste[i].length; j++)
+      {
+        if (Soreliste[i][j] === " ")
+        {
+          firstPass.push(0);
+        }
+        else if (Soreliste[i][j] === "X")
+        {
+          firstPass.push(10);
+        }
+        else if (Soreliste[i][j] === "/")
+        {
+          firstPass.push(10 - firstPass[firstPass.length - 1]);
+        }
+        else
+        {
+          firstPass.push(parseInt(Soreliste[i][j]));
+        }
+      }
+    }
+
+
+    let secondPass:number[] = new Array();
+    //copie firstPass by deleting the 0
+    for (let i = 0; i < firstPass.length; i++)
+    {
+      if (firstPass[i] !== 0)
+      {
+        secondPass.push(firstPass[i]);
+      }
+    }
+
+
+    return secondPass;
+
+
+
+
+
+  
+}
+
+
+
   
