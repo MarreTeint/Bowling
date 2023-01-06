@@ -4,7 +4,6 @@ import ScoreBoard from "./ScoreBoard";
 export default function ScoreManager(props) {
     const [playerList, setPlayerList] = React.useState(props.playerList);
     const [scoreList, setScoreList] = React.useState(props.scoreList);
-
     const updateScore = (player, lance, score) => {
         var newScoreList = scoreList;
         if (score == 10 && lance % 2 == 0) {
@@ -73,5 +72,4 @@ export default function ScoreManager(props) {
                         alert("Score invalide");
                     }
                 } }, { children: "Valider" }))] })));
-                
 }
