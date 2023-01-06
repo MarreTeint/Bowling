@@ -16,11 +16,11 @@ export default function ScoreBoards(props: any) {
             <table>
                 <thead>
 
-                    <th>
+                    <tr>
                     <td className="blackText">Player </td>
                     <td className="blackText" colSpan={21}> Score Board</td>
                     <td className="blackText">Total </td>
-                    </th>
+                    </tr>
                            
                 </thead>
                 <tbody>
@@ -30,7 +30,7 @@ export default function ScoreBoards(props: any) {
                 </tbody>
             </table>
         </div>
-    );     
+    );
 }
 
 
