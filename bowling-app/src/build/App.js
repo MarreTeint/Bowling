@@ -1,6 +1,6 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+
 import './App.css';
-import ScoreBoard from "./build/ScoreBoard";
 import ScoreManager from "./build/ScoreManager";
 const pLayerList = ["Player 1", "Player 2"];
 //const scoreList = ;
