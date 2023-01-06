@@ -1,7 +1,48 @@
-import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-import logo from './logo.svg';
+import { jsx as _jsx } from "react/jsx-runtime";
 import './App.css';
+import ScoreManager from "./build/ScoreManager";
+const pLayerList = ["Player 1", "Player 2"];
+//const scoreList = ;
+//array de 21 0 par joueur
+const scoreList = [
+    [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
+    [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "]
+];
 function App() {
-    return (_jsx("div", Object.assign({ className: "App" }, { children: _jsxs("header", Object.assign({ className: "App-header" }, { children: [_jsx("img", { src: logo, className: "App-logo", alt: "logo" }), _jsxs("p", { children: ["Edit ", _jsx("code", { children: "src/App.tsx" }), " and save to reload."] }), _jsx("a", Object.assign({ className: "App-link", href: "https://reactjs.org", target: "_blank", rel: "noopener noreferrer" }, { children: "Learn React" }))] })) })));
+    return (_jsx("div", Object.assign({ className: "App" }, { children: _jsx(ScoreManager, { playerList: pLayerList, scoreList: scoreList }) })));
+}
+/**
+ * Returns the score array from a rolls array
+ *
+ * @remarks
+ * /!\ A strike is represented by a [10], not a [10, 0] /!\
+ *
+ * @param rolls - array representing the succesive rolls of a bowling game
+ *
+ * @returns
+ * The score array
+ */
+function scoreFromPins(pins) {
+    var score = new Array(10);
+    var counter = 0;
+    for (let i = 0; i + 1 < pins.length; i += 2) {
+        if (pins[i] + pins[i + 1] < 10) {
+            score[counter] = pins[i] + pins[i + 1];
+            counter++;
+            continue;
+        }
+        if (i + 2 >= pins.length) {
+            break;
+        }
+        score[counter] = pins[i] + pins[i + 1] + pins[i + 2];
+        counter += 1;
+        if (pins[i] === 10) {
+            i--;
+        }
+    }
+    for (let i = 1; i < 10; i++) {
+        score[i] += score[i - 1];
+    }
+    return score;
 }
 export default App;
