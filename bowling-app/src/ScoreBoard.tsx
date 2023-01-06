@@ -21,8 +21,7 @@ export default function ScoreBoards(props: any) {
                     <td className="blackText" colSpan={21}> Score Board</td>
                     <td className="blackText">Total </td>
                     </tr>
-                    
-       
+                           
                 </thead>
                 <tbody>
                     <tr className="rounds"><td className="black"></td><td colSpan={2}>Tour n°1</td><td colSpan={2}>Tour n°2</td><td colSpan={2}>Tour n°3</td><td colSpan={2}>Tour n°4</td><td colSpan={2}>Tour n°5</td><td colSpan={2}>Tour n°6</td><td colSpan={2}>Tour n°7</td><td colSpan={2}>Tour n°8</td><td colSpan={2}>Tour n°9</td><td colSpan={3}>Tour n°10</td><td className="black"></td></tr>
@@ -31,7 +30,7 @@ export default function ScoreBoards(props: any) {
                 </tbody>
             </table>
         </div>
-    );     
+    );
 }
 
 
