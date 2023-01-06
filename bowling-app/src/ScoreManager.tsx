@@ -5,6 +5,7 @@ import ScoreBoard from "./ScoreBoard";
 export default function ScoreManager(props: any) {
     const [playerList, setPlayerList] = React.useState(props.playerList);
     const [scoreList, setScoreList] = React.useState(props.scoreList);
+
     const updateScore = (player: number, lance: number, score: number) => {
         var newScoreList = scoreList;
         if(score == 10 && lance%2 == 0){
@@ -15,6 +16,7 @@ export default function ScoreManager(props: any) {
             newScoreList[player][lance] = score;
         }
         setScoreList(newScoreList);
+        
     }
 
 
@@ -43,7 +45,10 @@ export default function ScoreManager(props: any) {
                 var score = document.getElementById("quilles") as HTMLSelectElement;
                 var scoreValue = parseInt(score.value);
                 var numlance = 2*round-2+lance;
-                if(round < 10 && lance == 1 && scoreValue + scoreList[player][numlance] <= 10 || round == 10 || lance == 0){
+            
+               
+                
+                if(round < 10 && lance == 1 && (scoreValue + scoreList[player][numlance-1]) <= 10 || round == 10 || lance == 0){
 
                     updateScore(player, numlance, scoreValue);
 
