@@ -77,7 +77,7 @@ export default function ScoreManager(props: any) {
                            
                             document.getElementById("quilles")?.remove(); //end game
                             document.getElementById("quillesupdate")?.remove(); //end game
-                            
+                            setLance(0);
                         }else if (lance === 2){
                             setPlayer(1);
                             setLance(0);
@@ -87,6 +87,7 @@ export default function ScoreManager(props: any) {
                             setLance(2);
                         }else if(lance === 1 && player === 1){
                             document.getElementById("quillesupdate")?.remove(); //end game
+                            setLance(0);
                         }else if(lance === 1){
                             setPlayer(1);
                             setLance(0);

@@ -51,6 +51,7 @@ export default function ScoreManager(props) {
                             if (lance === 2 && player === 1) {
                                 (_a = document.getElementById("quilles")) === null || _a === void 0 ? void 0 : _a.remove(); //end game
                                 (_b = document.getElementById("quillesupdate")) === null || _b === void 0 ? void 0 : _b.remove(); //end game
+                                setLance(0);
                             }
                             else if (lance === 2) {
                                 setPlayer(1);
@@ -61,6 +62,7 @@ export default function ScoreManager(props) {
                             }
                             else if (lance === 1 && player === 1) {
                                 (_c = document.getElementById("quillesupdate")) === null || _c === void 0 ? void 0 : _c.remove(); //end game
+                                setLance(0);
                             }
                             else if (lance === 1) {
                                 setPlayer(1);
