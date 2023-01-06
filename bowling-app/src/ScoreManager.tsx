@@ -1,7 +1,13 @@
 import React from "react";
 import ScoreBoard from "./ScoreBoard";
 
-
+/**
+ * @author ZERBIB-SEBIROT Martin
+ * @version 1.0
+ * @description
+ * @param props Liste des participants et liste des scores
+ * @returns 
+ */
 export default function ScoreManager(props: any) {
     const [playerList] = React.useState(props.playerList);
     const [scoreList, setScoreList] = React.useState(props.scoreList);
