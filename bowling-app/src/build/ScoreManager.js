@@ -25,7 +25,7 @@ export default function ScoreManager(props) {
                     var score = document.getElementById("quilles");
                     var scoreValue = parseInt(score.value);
                     var numlance = 2 * round - 2 + lance;
-                    if (round < 10 && lance == 1 && scoreValue + scoreList[player][numlance] <= 10 || round == 10 || lance == 0) {
+                    if (round < 10 && lance == 1 && (scoreValue + scoreList[player][numlance - 1]) <= 10 || round == 10 || lance == 0) {
                         updateScore(player, numlance, scoreValue);
                         if (round < 10) {
                             if (scoreValue == 10 && lance == 0) {

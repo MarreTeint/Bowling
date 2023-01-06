@@ -17,8 +17,7 @@ function App() {
     <div className="App">
 
     {// TODO : SORTIR LE SCOREBOARD DU SCOREMANAGER
-    }
-
+  }
       <ScoreManager playerList={pLayerList} scoreList={scoreList} />
      
      
