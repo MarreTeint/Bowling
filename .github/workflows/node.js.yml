@@ -25,7 +25,5 @@ jobs:
     - uses: actions/checkout@v3 
     - run: npm ci
       working-directory: bowling-app
-    - run: npm run build --if-present
-      working-directory: bowling-app
     - run: npm test
       working-directory: bowling-app
