@@ -54,25 +54,26 @@ export function ScoreListToScore(Soreliste:any) {
     //copie ScoreListe by replacing " " by 0, "X" by 10 and "/" by 10 - previous roll
     for (let i = 0; i < Soreliste.length; i++)
     {
-      for (let j = 0; j < Soreliste[i].length; j++)
-      {
-        if (Soreliste[i][j] === " ")
+     
+        if (Soreliste[i] === " ")
         {
-          firstPass.push(0);
+          firstPass.push(-1);
         }
-        else if (Soreliste[i][j] === "X")
+        else if (Soreliste[i] === "X" || Soreliste[i] === 10)
         {
           firstPass.push(10);
+          
+          
         }
-        else if (Soreliste[i][j] === "/")
+        else if (Soreliste[i] === "/")
         {
           firstPass.push(10 - firstPass[firstPass.length - 1]);
         }
         else
         {
-          firstPass.push(parseInt(Soreliste[i][j]));
+          firstPass.push(parseInt(Soreliste[i]));
         }
-      }
+     
     }
 
 
@@ -80,7 +81,7 @@ export function ScoreListToScore(Soreliste:any) {
     //copie firstPass by deleting the 0
     for (let i = 0; i < firstPass.length; i++)
     {
-      if (firstPass[i] !== 0)
+      if (firstPass[i] !== -1)
       {
         secondPass.push(firstPass[i]);
       }
@@ -95,8 +96,28 @@ export function ScoreListToScore(Soreliste:any) {
 export default function scoreProcess(ScoreListe:any) {
     let score:number[] = new Array(10);
     let pins:number[] = ScoreListToScore(ScoreListe);
+    console.log("le score transformée :"+ScoreListToScore(ScoreListe))
     score = scoreFromPins(pins);
-    return score;
+    console.log("le score calculé :"+score);
+    //return the last index of score whose value is not undefined
+    let lastScore:number = 0;
+    for (let i = 0; i < score.length; i++)
+    {
+      if (!Number.isNaN(score[i]))
+      {
+        lastScore = i;
+      }
+    }
+    return score[lastScore];
+    
+
+   
+  
+
+
+
+
+    
   }
 
 

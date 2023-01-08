@@ -1,5 +1,5 @@
 import '@testing-library/react';
-import {scoreFromPins} from "../build/scoreProcess";
+import {scoreFromPins,ScoreListToScore} from "../build/scoreProcess";
 
 test('test du systeme de calcul de score', () => {
   //create an array of score
@@ -41,3 +41,20 @@ test('test du systeme de calcul de score', () => {
 
 
 });
+
+test('test du convertissuer', () => {
+  const scoreTest1        = ['X', ' ', 'X', ' ', 'X', ' ', 'X', ' ', 'X', ' ', 'X', ' ', 'X', ' ', 'X', ' ', 'X', ' ', 'X', 'X', 'X'];
+  const expectedScore1    = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]
+
+  expect(ScoreListToScore(scoreTest1)).toStrictEqual(expectedScore1);
+
+  // const scoreTest2        = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ' '];
+  // const expectedScore2    = []
+
+  // expect(ScoreListToScore(scoreTest2)).toStrictEqual(expectedScore2);
+
+  const scoreTest3       = [0, '/', 'X', ' ', 'X', ' ', 'X', ' ', 'X', ' ', 'X', ' ', 'X', ' ', 'X', ' ', 'X', ' ', 'X', 'X', 'X'];
+  const expectedScore3   =  [0,10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10];
+
+  expect(ScoreListToScore(scoreTest3)).toStrictEqual(expectedScore3);
+})

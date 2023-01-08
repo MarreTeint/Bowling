@@ -7,9 +7,9 @@ export default function ScoreManager(props: any) {
     const [scoreList, setScoreList] = React.useState(props.scoreList);
 
     const updateScore = (player: number, lance: number, score: number) => {
-        console.log("ici")
+        
         var newScoreList = scoreList;       
-        if(score === 10 && lance%2 === 0){
+        if(score === 10 && (lance%2 === 0 || lance===19) ){
             newScoreList[player][lance] = 'X';
         }else if(score + scoreList[player][lance-1] === 10 && (lance%2)===1){
             newScoreList[player][lance] = '/';
@@ -18,7 +18,7 @@ export default function ScoreManager(props: any) {
         }
 
         setScoreList(newScoreList);
-        console.log(scoreList)
+        
     }
 
 
@@ -27,7 +27,7 @@ export default function ScoreManager(props: any) {
     const [player, setPlayer] = React.useState(0);
     return (        
         <div className="scoreManager">
-             <ScoreBoard playerList={playerList} scoreList={scoreList} />
+             <ScoreBoard playerList={playerList} scoreList={scoreList} round={round}/>
             Au tour de {playerList[player]}<br></br>
             Tour n°{round} | Lance n°{lance+1}<br></br>
             <select id = "quilles">
@@ -51,7 +51,7 @@ export default function ScoreManager(props: any) {
                
                 
                 if(round < 10 && lance === 1 && scoreValue + scoreList[player][numlance-1] <= 10 || (round === 10 )|| (lance === 0)){
-                    console.log(lance)
+                   
                     updateScore(player, numlance, scoreValue);
 
 

@@ -1,4 +1,6 @@
 import React from "react";
+import scoreProcess,{ScoreListToScore,scoreFromPins} from "./scoreProcess";
+
 /** 
  * @author Leborgne Kevin 
  * @version 1.0
@@ -9,6 +11,8 @@ import React from "react";
 export default function ScoreBoards(props: any) {
     const [playerList, setPlayerList] = React.useState(props.playerList);
     const [scoreList, setScoreList] = React.useState(props.scoreList);
+    //create round var 
+    const [round, setRound] = React.useState(props.round);
 
 
     return (
@@ -25,8 +29,8 @@ export default function ScoreBoards(props: any) {
                 </thead>
                 <tbody>
                     <tr className="rounds"><td className="black"></td><td colSpan={2}>Tour n°1</td><td colSpan={2}>Tour n°2</td><td colSpan={2}>Tour n°3</td><td colSpan={2}>Tour n°4</td><td colSpan={2}>Tour n°5</td><td colSpan={2}>Tour n°6</td><td colSpan={2}>Tour n°7</td><td colSpan={2}>Tour n°8</td><td colSpan={2}>Tour n°9</td><td colSpan={3}>Tour n°10</td><td className="black"></td></tr>
-                    <PLayerSCoreBoards PlayerName={playerList[0]} PlayerSCore={scoreList[0]} />
-                    <PLayerSCoreBoards PlayerName={playerList[1]} PlayerSCore={scoreList[1]} />
+                    <PLayerSCoreBoards PlayerName={playerList[0]} PlayerSCore={scoreList[0]} round={round}/>
+                    <PLayerSCoreBoards PlayerName={playerList[1]} PlayerSCore={scoreList[1]} round={round}/>
                 </tbody>
             </table>
         </div>
@@ -44,6 +48,7 @@ export default function ScoreBoards(props: any) {
 export function PLayerSCoreBoards(props: any) {
     const PlayerSCore = props.PlayerSCore;
     const PlayerName = props.PlayerName;
+    const round= props.round;
 
    
     const Score = PlayerSCore.map((score: any,index:any) =>
@@ -54,8 +59,11 @@ export function PLayerSCoreBoards(props: any) {
         <tr className="scoreboard">
             <td scope="row" className="blackText">{PlayerName}</td>
             {Score}
-            <td>No</td>
+            <td>{scoreProcess(PlayerSCore)}</td> 
+          
         </tr>
     );   
     
 }
+
+
