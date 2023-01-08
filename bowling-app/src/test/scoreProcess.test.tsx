@@ -48,11 +48,6 @@ test('test du convertissuer', () => {
 
   expect(ScoreListToScore(scoreTest1)).toStrictEqual(expectedScore1);
 
-  // const scoreTest2        = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ' '];
-  // const expectedScore2    = []
-
-  // expect(ScoreListToScore(scoreTest2)).toStrictEqual(expectedScore2);
-
   const scoreTest3       = [0, '/', 'X', ' ', 'X', ' ', 'X', ' ', 'X', ' ', 'X', ' ', 'X', ' ', 'X', ' ', 'X', ' ', 'X', 'X', 'X'];
   const expectedScore3   =  [0,10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10];
 
