@@ -1,5 +1,8 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-import React from "react";
+import { useContext } from "react";
+import { scoreListContext } from "./context/scoreListContext";
+import { playerListContext } from "./context/playerListContext";
+import { roundContext } from "./context/roundContext";
 import scoreProcess from "./scoreProcess";
 /**
  * @author Leborgne Kevin
@@ -9,10 +12,9 @@ import scoreProcess from "./scoreProcess";
  * @returns Tableau de score des participants
 */
 export default function ScoreBoards(props) {
-    const [playerList, setPlayerList] = React.useState(props.playerList);
-    const [scoreList, setScoreList] = React.useState(props.scoreList);
-    //create round var 
-    const [round, setRound] = React.useState(props.round);
+    const { playerList, setPlayerList } = useContext(playerListContext);
+    const { scoreList, setScoreList } = useContext(scoreListContext);
+    const { round, setRound } = useContext(roundContext);
     return (_jsx("div", Object.assign({ className: "scoreboard" }, { children: _jsxs("table", { children: [_jsx("thead", { children: _jsxs("tr", { children: [_jsx("td", Object.assign({ className: "blackText" }, { children: "Player " })), _jsx("td", Object.assign({ className: "blackText", colSpan: 21 }, { children: " Score Board" })), _jsx("td", Object.assign({ className: "blackText" }, { children: "Total " }))] }) }), _jsxs("tbody", { children: [_jsxs("tr", Object.assign({ className: "rounds" }, { children: [_jsx("td", { className: "black" }), _jsx("td", Object.assign({ colSpan: 2 }, { children: "Tour n\u00B01" })), _jsx("td", Object.assign({ colSpan: 2 }, { children: "Tour n\u00B02" })), _jsx("td", Object.assign({ colSpan: 2 }, { children: "Tour n\u00B03" })), _jsx("td", Object.assign({ colSpan: 2 }, { children: "Tour n\u00B04" })), _jsx("td", Object.assign({ colSpan: 2 }, { children: "Tour n\u00B05" })), _jsx("td", Object.assign({ colSpan: 2 }, { children: "Tour n\u00B06" })), _jsx("td", Object.assign({ colSpan: 2 }, { children: "Tour n\u00B07" })), _jsx("td", Object.assign({ colSpan: 2 }, { children: "Tour n\u00B08" })), _jsx("td", Object.assign({ colSpan: 2 }, { children: "Tour n\u00B09" })), _jsx("td", Object.assign({ colSpan: 3 }, { children: "Tour n\u00B010" })), _jsx("td", { className: "black" })] })), _jsx(PLayerSCoreBoards, { PlayerName: playerList[0], PlayerSCore: scoreList[0], round: round }), _jsx(PLayerSCoreBoards, { PlayerName: playerList[1], PlayerSCore: scoreList[1], round: round })] })] }) })));
 }
 /**

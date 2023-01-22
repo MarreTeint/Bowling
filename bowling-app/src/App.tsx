@@ -1,29 +1,41 @@
 import React from 'react';
 import './App.css';
 import ScoreManager from "./build/ScoreManager";
-import { scoreFromPins } from './scoreProcess';
-
-const pLayerList = ["Player 1", "Player 2"];
-
-//const scoreList = ;
-//array de 21 0 par joueur
+import {scoreListContext} from "./context/scoreListContext";
+import {playerListContext} from "./context/playerListContext";
+import {roundContext} from "./context/roundContext";
+import ScoreBoard from "./ScoreBoard";
 
 
-const scoreList = [
-  [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
-  [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "]
-];
+
+
+
+
+
+  
+
 
 
 function App() {
 
+  const [scoreList, setScoreList]= React.useState([[" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "],[" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "]]);
+  const [playerList, setPlayerList] = React.useState(["Player 1", "Player 2"]);
+  const [round, setRound] = React.useState(1);
+
   return (
     <div className="App">
-    {// TODO : SORTIR LE SCOREBOARD DU SCOREMANAGER
-  }
-
-      <ScoreManager playerList={pLayerList} scoreList={scoreList} />
-     
+      <scoreListContext.Provider value={{scoreList, setScoreList}}>
+        <playerListContext.Provider value={{playerList, setPlayerList}}>
+          <roundContext.Provider value={{round, setRound}}>
+            
+          <ScoreBoard />
+          <ScoreManager />
+            
+          </roundContext.Provider>
+        </playerListContext.Provider>
+      </scoreListContext.Provider>
+ 
+        
     
     </div>
   );

@@ -1,39 +1,45 @@
-import React from "react";
-import ScoreBoard from "./ScoreBoard";
+import React, { useContext } from "react";
+import {scoreListContext} from "./context/scoreListContext";
+import {playerListContext} from "./context/playerListContext";
+import {roundContext} from "./context/roundContext";
+
 
 /**
  * @author ZERBIB-SEBIROT Martin
  * @version 1.0
  * @description
- * @param props Liste des participants et liste des scores
+ * @param pro
  * @returns 
  */
 export default function ScoreManager(props: any) {
-    const [playerList] = React.useState(props.playerList);
-    const [scoreList, setScoreList] = React.useState(props.scoreList);
+   
+    const [lance, setLance] = React.useState(0);
+    const [player, setPlayer] = React.useState(0);
+    const {playerList, setPlayerList} = useContext(playerListContext);
+    const {scoreList, setScoreList}= useContext(scoreListContext);
+    const {round, setRound} =  useContext(roundContext);
 
     const updateScore = (player: number, lance: number, score: number) => {
+        console.log("updateScore")
         
         var newScoreList = scoreList;       
         if(score === 10 && (lance%2 === 0 || lance===19) ){
             newScoreList[player][lance] = 'X';
-        }else if(score + scoreList[player][lance-1] === 10 && (lance%2)===1){
+        }else if(score + +scoreList[player][lance-1] === 10 && (lance%2)===1){
             newScoreList[player][lance] = '/';
         }else{
-            newScoreList[player][lance] = score;
+            newScoreList[player][lance] = score.toString();
         }
 
-        setScoreList(newScoreList);
+        setScoreList(newScoreList,);
+        console.log(scoreList)
         
     }
 
 
-    const[round, setRound] = React.useState(1);
-    const [lance, setLance] = React.useState(0);
-    const [player, setPlayer] = React.useState(0);
+
     return (        
         <div className="scoreManager">
-             <ScoreBoard playerList={playerList} scoreList={scoreList} round={round}/>
             Au tour de {playerList[player]}<br></br>
             Tour n°{round} | Lance n°{lance+1}<br></br>
             <select id = "quilles">
@@ -56,7 +62,7 @@ export default function ScoreManager(props: any) {
             
                
                 
-                if(round < 10 && lance === 1 && scoreValue + scoreList[player][numlance-1] <= 10 || (round === 10 )|| (lance === 0)){
+                if(round < 10 && lance === 1 && scoreValue + +scoreList[player][numlance-1] <= 10 || (round === 10 )|| (lance === 0)){
                    
                     updateScore(player, numlance, scoreValue);
 

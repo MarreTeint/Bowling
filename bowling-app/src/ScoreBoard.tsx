@@ -1,5 +1,8 @@
-import React from "react";
-import scoreProcess,{ScoreListToScore,scoreFromPins} from "./scoreProcess";
+import React, { useContext } from "react";
+import {scoreListContext} from "./context/scoreListContext";
+import {playerListContext} from "./context/playerListContext";
+import {roundContext} from "./context/roundContext";
+import scoreProcess from "./scoreProcess";
 
 /** 
  * @author Leborgne Kevin 
@@ -9,10 +12,12 @@ import scoreProcess,{ScoreListToScore,scoreFromPins} from "./scoreProcess";
  * @returns Tableau de score des participants
 */
 export default function ScoreBoards(props: any) {
-    const [playerList, setPlayerList] = React.useState(props.playerList);
-    const [scoreList, setScoreList] = React.useState(props.scoreList);
-    //create round var 
-    const [round, setRound] = React.useState(props.round);
+  
+    const {playerList, setPlayerList} = useContext(playerListContext);
+    const {scoreList, setScoreList}= useContext(scoreListContext);
+    const {round, setRound} =  useContext(roundContext);
+
+
 
 
     return (
