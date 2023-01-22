@@ -11,8 +11,7 @@ import scoreProcess from "./scoreProcess";
  * @param props Liste des participants et liste des scores
  * @returns Tableau de score des participants
 */
-export default function ScoreBoards(props: any) {
-  
+export default function ScoreBoards(props: any) {  
     const {playerList, setPlayerList} = useContext(playerListContext);
     const {scoreList, setScoreList}= useContext(scoreListContext);
     const {round, setRound} =  useContext(roundContext);
@@ -22,7 +21,8 @@ export default function ScoreBoards(props: any) {
 
     return (
         <div className="scoreboard">
-            <table>
+            {scoreList}
+            {/* <table>
                 <thead>
 
                     <tr>
@@ -37,7 +37,7 @@ export default function ScoreBoards(props: any) {
                     <PLayerSCoreBoards PlayerName={playerList[0]} PlayerSCore={scoreList[0]} round={round}/>
                     <PLayerSCoreBoards PlayerName={playerList[1]} PlayerSCore={scoreList[1]} round={round}/>
                 </tbody>
-            </table>
+            </table> */}
         </div>
     );
 }
