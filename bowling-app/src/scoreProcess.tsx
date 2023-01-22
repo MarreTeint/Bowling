@@ -96,9 +96,7 @@ export function ScoreListToScore(Soreliste:any) {
 export default function scoreProcess(ScoreListe:any) {
     let score:number[] = new Array(10);
     let pins:number[] = ScoreListToScore(ScoreListe);
-    console.log("le score transformée :"+ScoreListToScore(ScoreListe))
     score = scoreFromPins(pins);
-    console.log("le score calculé :"+score);
     //return the last index of score whose value is not undefined
     let lastScore:number = 0;
     for (let i = 0; i < score.length; i++)

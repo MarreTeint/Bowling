@@ -12,12 +12,13 @@ import {roundContext} from "./context/roundContext";
  * @returns 
  */
 export default function ScoreManager(props: any) {
-   
-    const [lance, setLance] = React.useState(0);
-    const [player, setPlayer] = React.useState(0);
     const {playerList, setPlayerList} = useContext(playerListContext);
     const {scoreList, setScoreList}= useContext(scoreListContext);
     const {round, setRound} =  useContext(roundContext);
+    const [lance, setLance] = React.useState(0);
+    const [player, setPlayer] = React.useState(0);
+
+  
 
     const updateScore = (player: number, lance: number, score: number) => {
         console.log("updateScore")
@@ -56,6 +57,8 @@ export default function ScoreManager(props: any) {
                 <option value = "10">10</option>
             </select>
             <button id="quillesupdate" onClick={()=>{
+
+                console.log(round);
                 var score = document.getElementById("quilles") as HTMLSelectElement;
                 var scoreValue = parseInt(score.value);
                 var numlance = 2*round-2+lance;
