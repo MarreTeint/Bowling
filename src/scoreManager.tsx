@@ -3,6 +3,8 @@ import React, { useContext ,useEffect} from "react";
 import {scoreListContext} from "./context/scorelist";
 import {playerListContext} from "./context/playerlist";
 import {roundContext} from "./context/round";
+import {quilleNumberContext} from "./context/quilleNumber";
+import {roundNumberContext} from "./context/roundNumber";
 
  const ScoreManager = () => {
     const { scoreList,setScoreList} = useContext(scoreListContext);
@@ -10,6 +12,8 @@ import {roundContext} from "./context/round";
     const { round,setRound} = useContext(roundContext);
     const [lance, setLance] = React.useState(0);
     const [player, setPlayer] = React.useState(0);
+    const {quilleNumber} = useContext(quilleNumberContext);
+    const {roundNumber} = useContext(roundNumberContext);
 
     useEffect(() => {
         console.log("Round has been updated")
@@ -17,9 +21,9 @@ import {roundContext} from "./context/round";
 
     const updateScore = (player: number, lance: number, score: number) => {        
         var newScoreList = [...scoreList];       
-        if(score === 10 && (lance%2 === 0 || lance===19) ){
+        if(score === quilleNumber && (lance%2 === 0 || lance===19) ){
             newScoreList[player][lance] = 'X';
-        }else if(score + +scoreList[player][lance-1] === 10 && (lance%2)===1){
+        }else if(score + +scoreList[player][lance-1] === quilleNumber && (lance%2)===1){
             newScoreList[player][lance] = '/';
         }else{
             newScoreList[player][lance] = score.toString();
@@ -28,6 +32,14 @@ import {roundContext} from "./context/round";
         console.log(scoreList);    
     }
     
+    const printQuilleNumber = () => {
+        let options = [];
+        for(var i=0; i<=quilleNumber; i++){
+            options.push(<option value = {i}>{i}</option>);
+        }
+        return options;
+    }
+
 
 
  
@@ -35,33 +47,26 @@ import {roundContext} from "./context/round";
         <div className="scoreManager">             
             Au tour de {playerList[player]}<br></br>
             Tour n°{round} | Lance n°{lance+1}<br></br>
-            <select id = "quilles">
-                <option value = "0">0</option>
-                <option value = "1">1</option>
-                <option value = "2">2</option>
-                <option value = "3">3</option>
-                <option value = "4">4</option>
-                <option value = "5">5</option>
-                <option value = "6">6</option>
-                <option value = "7">7</option>
-                <option value = "8">8</option>
-                <option value = "9">9</option>
-                <option value = "10">10</option>
+            <select id = "quilles" required>
+                <option value ="-1" selected>Choisir le nombre de quille tombées</option>
+                {printQuilleNumber()}
             </select>
             <button id="quillesupdate" onClick={()=>{
                 var score = document.getElementById("quilles") as HTMLSelectElement;
                 var scoreValue = parseInt(score.value);
+                score.value="-1";
                 var numlance = 2*round-2+lance;
             
-               
-                
-                if(round < 10 && lance === 1 && scoreValue + +scoreList[player][numlance-1] <= 10 || (round === 10 )|| (lance === 0)){
+                if(scoreValue == -1){
+                    alert("Veuillez choisir le nombre de quilles tombées");
+                    return;
+                }else if(round < roundNumber && lance === 1 && scoreValue + +scoreList[player][numlance-1] <= quilleNumber || (round === roundNumber )|| (lance === 0)){
                    
                     updateScore(player, numlance, scoreValue);
 
 
-                    if(round<10){
-                        if(scoreValue === 10 && lance === 0){
+                    if(round<roundNumber){
+                        if(scoreValue === quilleNumber && lance === 0){
                             setLance(0);
                             if(player ===1){
                                 setRound(round+1);
@@ -72,11 +77,11 @@ import {roundContext} from "./context/round";
                         if(player ===1 && lance === 1){
                             setRound(round+1);
                         }
-                        if(lance === 1 || lance === 0 && scoreValue === 10){
+                        if(lance === 1 || lance === 0 && scoreValue === quilleNumber){
                             setPlayer((player+1)%2);
                         }
                     }
-                    else{ //round 10
+                    else{ //last round
                         
                         if(lance === 2 && player === 1){
                            
@@ -91,6 +96,7 @@ import {roundContext} from "./context/round";
                         if((lance === 1 && scoreList[player][numlance-1] === 'X' )|| scoreList[player][numlance] === '/'){
                             setLance(2);
                         }else if(lance === 1 && player === 1){
+                            document.getElementById("quilles")?.remove(); //end game
                             document.getElementById("quillesupdate")?.remove(); //end game
                             setLance(0);
                         }else if(lance === 1){
