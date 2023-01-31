@@ -1,9 +1,9 @@
 import '@testing-library/react';
 import {scoreFromPins,ScoreListToScore} from "../scoreProcess";
 
-test('test du systeme de calcul de score', () => {
+test('du systeme de calcul de score', () => {
   //create an array of score
-  const score:number[] = new Array(10);
+
   
   const rolls1:number[] = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10];
   const expected_score1:number[] = [30, 60, 90, 120, 150, 180, 210, 240, 270, 300];
@@ -42,7 +42,7 @@ test('test du systeme de calcul de score', () => {
 
 });
 
-test('test du convertissuer', () => {
+test('convertissuer', () => {
   const scoreTest1        = ['X', ' ', 'X', ' ', 'X', ' ', 'X', ' ', 'X', ' ', 'X', ' ', 'X', ' ', 'X', ' ', 'X', ' ', 'X', 'X', 'X'];
   const expectedScore1    = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]
 
