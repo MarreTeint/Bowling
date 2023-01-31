@@ -1,33 +1,38 @@
-import React from "react";
-import ScoreBoard from "./ScoreBoard";
+/* eslint-disable no-mixed-operators */
+import React, { useContext ,useEffect} from "react";
+import {scoreListContext} from "./context/scorelist";
+import {playerListContext} from "./context/playerlist";
+import {roundContext} from "./context/round";
 
-
-export default function ScoreManager(props: any) {
-    const [playerList] = React.useState(props.playerList);
-    const [scoreList, setScoreList] = React.useState(props.scoreList);
-
-    const updateScore = (player: number, lance: number, score: number) => {
-        console.log("ici")
-        var newScoreList = scoreList;       
-        if(score === 10 && lance%2 === 0){
-            newScoreList[player][lance] = 'X';
-        }else if(score + scoreList[player][lance-1] === 10 && (lance%2)===1){
-            newScoreList[player][lance] = '/';
-        }else{
-            newScoreList[player][lance] = score;
-        }
-
-        setScoreList(newScoreList);
-        console.log(scoreList)
-    }
-
-
-    const[round, setRound] = React.useState(1);
+ const ScoreManager = () => {
+    const { scoreList,setScoreList} = useContext(scoreListContext);
+    const { playerList} = useContext(playerListContext);
+    const { round,setRound} = useContext(roundContext);
     const [lance, setLance] = React.useState(0);
     const [player, setPlayer] = React.useState(0);
+
+    useEffect(() => {
+        console.log("Round has been updated")
+    }, [round])
+
+    const updateScore = (player: number, lance: number, score: number) => {        
+        var newScoreList = [...scoreList];       
+        if(score === 10 && (lance%2 === 0 || lance===19) ){
+            newScoreList[player][lance] = 'X';
+        }else if(score + +scoreList[player][lance-1] === 10 && (lance%2)===1){
+            newScoreList[player][lance] = '/';
+        }else{
+            newScoreList[player][lance] = score.toString();
+        }
+        setScoreList(newScoreList);    
+        console.log(scoreList);    
+    }
+    
+
+
+ 
     return (        
-        <div className="scoreManager">
-             <ScoreBoard playerList={playerList} scoreList={scoreList} />
+        <div className="scoreManager">             
             Au tour de {playerList[player]}<br></br>
             Tour n°{round} | Lance n°{lance+1}<br></br>
             <select id = "quilles">
@@ -50,8 +55,8 @@ export default function ScoreManager(props: any) {
             
                
                 
-                if(round < 10 && lance === 1 && scoreValue + scoreList[player][numlance-1] <= 10 || (round === 10 )|| (lance === 0)){
-                    console.log(lance)
+                if(round < 10 && lance === 1 && scoreValue + +scoreList[player][numlance-1] <= 10 || (round === 10 )|| (lance === 0)){
+                   
                     updateScore(player, numlance, scoreValue);
 
 
@@ -83,7 +88,7 @@ export default function ScoreManager(props: any) {
                             setLance(0);
                         }
 
-                        if(lance === 1 && scoreList[player][numlance-1] === 'X' || scoreList[player][numlance] === '/'){
+                        if((lance === 1 && scoreList[player][numlance-1] === 'X' )|| scoreList[player][numlance] === '/'){
                             setLance(2);
                         }else if(lance === 1 && player === 1){
                             document.getElementById("quillesupdate")?.remove(); //end game
@@ -104,3 +109,6 @@ export default function ScoreManager(props: any) {
        </div>
     );    
 }
+export default ScoreManager;
+
+
