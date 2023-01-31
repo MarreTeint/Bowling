@@ -4,7 +4,7 @@ import {scoreListContext} from "./context/scorelist";
 import {playerListContext} from "./context/playerlist";
 import {roundContext} from "./context/round";
 import {quilleNumberContext} from "./context/quilleNumber";
-import { urlToHttpOptions } from "url";
+import {roundNumberContext} from "./context/roundNumber";
 
  const ScoreManager = () => {
     const { scoreList,setScoreList} = useContext(scoreListContext);
@@ -13,6 +13,7 @@ import { urlToHttpOptions } from "url";
     const [lance, setLance] = React.useState(0);
     const [player, setPlayer] = React.useState(0);
     const {quilleNumber} = useContext(quilleNumberContext);
+    const {roundNumber} = useContext(roundNumberContext);
 
     useEffect(() => {
         console.log("Round has been updated")
@@ -59,12 +60,12 @@ import { urlToHttpOptions } from "url";
                 if(scoreValue == -1){
                     alert("Veuillez choisir le nombre de quilles tombées");
                     return;
-                }else if(round < 10 && lance === 1 && scoreValue + +scoreList[player][numlance-1] <= quilleNumber || (round === 10 )|| (lance === 0)){
+                }else if(round < roundNumber && lance === 1 && scoreValue + +scoreList[player][numlance-1] <= quilleNumber || (round === roundNumber )|| (lance === 0)){
                    
                     updateScore(player, numlance, scoreValue);
 
 
-                    if(round<10){
+                    if(round<roundNumber){
                         if(scoreValue === quilleNumber && lance === 0){
                             setLance(0);
                             if(player ===1){
@@ -80,7 +81,7 @@ import { urlToHttpOptions } from "url";
                             setPlayer((player+1)%2);
                         }
                     }
-                    else{ //round 10
+                    else{ //last round
                         
                         if(lance === 2 && player === 1){
                            
