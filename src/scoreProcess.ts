@@ -9,7 +9,7 @@
  * @returns
  * The score array
  */
- export function scoreFromPins(pins:number[]) {
+export function scoreFromPins(pins:number[]) {
     var score:number[] = new Array(10);
     var counter:number = 0;
     for (let i = 0; i + 1 < pins.length; i+=2)
@@ -50,7 +50,7 @@
   }
 
 export function ScoreListToScore(Soreliste:any) {
-    let firstPass:number[] = new Array();
+    let firstPass:number[] = [];
     //copie ScoreListe by replacing " " by 0, "X" by 10 and "/" by 10 - previous roll
     for (let i = 0; i < Soreliste.length; i++)
     {
@@ -77,7 +77,7 @@ export function ScoreListToScore(Soreliste:any) {
     }
 
 
-    let secondPass:number[] = new Array();
+    let secondPass:number[] = [];
     //copie firstPass by deleting the 0
     for (let i = 0; i < firstPass.length; i++)
     {
@@ -96,9 +96,7 @@ export function ScoreListToScore(Soreliste:any) {
 export default function scoreProcess(ScoreListe:any) {
     let score:number[] = new Array(10);
     let pins:number[] = ScoreListToScore(ScoreListe);
-    console.log("le score transformée :"+ScoreListToScore(ScoreListe))
     score = scoreFromPins(pins);
-    console.log("le score calculé :"+score);
     //return the last index of score whose value is not undefined
     let lastScore:number = 0;
     for (let i = 0; i < score.length; i++)
@@ -121,5 +119,3 @@ export default function scoreProcess(ScoreListe:any) {
   }
 
 
-
-  

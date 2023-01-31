@@ -1,22 +1,21 @@
-import React from "react";
-import scoreProcess,{ScoreListToScore,scoreFromPins} from "./scoreProcess";
+import React, { useContext,useEffect } from "react";
+import {scoreListContext} from "./context/scorelist";
+import {playerListContext} from "./context/playerlist";
+import {roundContext} from "./context/round";
+import scoreProcess from "./scoreProcess";
 
-/** 
- * @author Leborgne Kevin 
- * @version 1.0
- * @description Génere le tableau de score des participants
- * @param props Liste des participants et liste des scores
- * @returns Tableau de score des participants
-*/
-export default function ScoreBoards(props: any) {
-    const [playerList, setPlayerList] = React.useState(props.playerList);
-    const [scoreList, setScoreList] = React.useState(props.scoreList);
-    //create round var 
-    const [round, setRound] = React.useState(props.round);
-
+const  ScoreBoard = () => {
+    const { scoreList} = useContext(scoreListContext);
+    const { playerList} = useContext(playerListContext);
+    const { round} = useContext(roundContext);
+    useEffect(() => {
+        console.log("ScoreList has been updated")
+    }, [scoreList, playerList, round])
+  
 
     return (
         <div className="scoreboard">
+            {scoreList}
             <table>
                 <thead>
 
@@ -48,7 +47,7 @@ export default function ScoreBoards(props: any) {
 export function PLayerSCoreBoards(props: any) {
     const PlayerSCore = props.PlayerSCore;
     const PlayerName = props.PlayerName;
-    const round= props.round;
+  
 
    
     const Score = PlayerSCore.map((score: any,index:any) =>
@@ -57,7 +56,7 @@ export function PLayerSCoreBoards(props: any) {
 
     return (
         <tr className="scoreboard">
-            <td scope="row" className="blackText">{PlayerName}</td>
+            <td className="blackText">{PlayerName}</td>
             {Score}
             <td>{scoreProcess(PlayerSCore)}</td> 
           
@@ -65,5 +64,4 @@ export function PLayerSCoreBoards(props: any) {
     );   
     
 }
-
-
+export default ScoreBoard ;

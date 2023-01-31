@@ -28,6 +28,15 @@
   color: #61dafb;
 }
 
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 table {
   border-collapse: collapse;
   width: 65%;
@@ -55,11 +64,3 @@ th, td {
   font-weight: bold;
   color: black;
 }
-/* .scoreboard{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  margin: 20px;
-
-*/

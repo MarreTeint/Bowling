@@ -1,5 +1,5 @@
 import '@testing-library/react';
-import {scoreFromPins,ScoreListToScore} from "../build/scoreProcess";
+import {scoreFromPins,ScoreListToScore} from "../scoreProcess";
 
 test('test du systeme de calcul de score', () => {
   //create an array of score
