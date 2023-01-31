@@ -26,3 +26,4 @@ jobs:
     - run: npm ci
       working-directory: bowling-app
     - run: npm test
+      working-directory: bowling-app
