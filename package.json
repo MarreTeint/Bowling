@@ -39,5 +39,18 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "*Created by Martin, Kevin, Elyas, Bastien, and Maxime.*",
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarreTeint/Bowling.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarreTeint/Bowling/issues"
+  },
+  "homepage": "https://github.com/MarreTeint/Bowling#readme"
 }
