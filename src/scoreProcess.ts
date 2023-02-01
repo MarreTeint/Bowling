@@ -108,14 +108,6 @@ export default function scoreProcess(ScoreListe:any) {
     }
     return score[lastScore];
     
-
-   
-  
-
-
-
-
-    
   }
 
 
