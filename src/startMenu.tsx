@@ -6,7 +6,7 @@ import {scoreListContext} from "./context/scorelist";
 export const StartMenu = () => {
     const {quilleNumber, setquilleNumber} = useContext(quilleNumberContext);
     const {roundNumber, setroundNumber} = useContext(roundNumberContext);
-    const {scoreList, setScoreList} = useContext(scoreListContext);
+    const {setScoreList} = useContext(scoreListContext);
 
     function quillesUpdate(){
         var nbQuilles = document.getElementById("nbQuilles") as HTMLInputElement;
@@ -26,8 +26,8 @@ export const StartMenu = () => {
     return(
         <div>
             <form>
-                <label>Nombre de Quilles : </label> <input id="nbQuilles" type="number" min="1" max="10" step="1" defaultValue={quilleNumber} onChange={()=>{quillesUpdate()}}></input>
-                <label>Nombre de tours : </label> <input id="nbRounds" type="number" min="1" max="10" step="1" defaultValue={roundNumber} onChange={()=>{roundsUpdate()}}></input>
+                <label>Nombre de Quilles : </label> <input id="nbQuilles" type="number" min="1" step="1" defaultValue={quilleNumber} onChange={()=>{quillesUpdate()}}></input>
+                <label>Nombre de tours : </label> <input id="nbRounds" type="number" min="1" step="1" defaultValue={roundNumber} onChange={()=>{roundsUpdate()}}></input>
             </form>
         </div>
     )
