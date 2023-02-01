@@ -15,7 +15,7 @@ const  ScoreBoard = () => {
 
     return (
         <div className="scoreboard">
-            {scoreList}
+           
             <table>
                 <thead>
 

@@ -5,8 +5,10 @@ import {playerListContext} from "./context/playerlist";
 import {roundContext} from "./context/round";
 import {quilleNumberContext} from "./context/quilleNumber";
 import {roundNumberContext} from "./context/roundNumber";
+import { useNavigate } from "react-router-dom";
 
  const ScoreManager = () => {
+    let navigate = useNavigate();
     const { scoreList,setScoreList} = useContext(scoreListContext);
     const { playerList} = useContext(playerListContext);
     const { round,setRound} = useContext(roundContext);
@@ -88,6 +90,7 @@ import {roundNumberContext} from "./context/roundNumber";
                             document.getElementById("quilles")?.remove(); //end game
                             document.getElementById("quillesupdate")?.remove(); //end game
                             setLance(0);
+                            navigate("../Endgame");
                         }else if (lance === 2){
                             setPlayer(1);
                             setLance(0);
@@ -98,6 +101,7 @@ import {roundNumberContext} from "./context/roundNumber";
                         }else if(lance === 1 && player === 1){
                             document.getElementById("quilles")?.remove(); //end game
                             document.getElementById("quillesupdate")?.remove(); //end game
+                            navigate("../Endgame");
                             setLance(0);
                         }else if(lance === 1){
                             setPlayer(1);

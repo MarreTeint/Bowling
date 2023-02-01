@@ -1,12 +1,15 @@
 import React from 'react';
 import './App.css';
-import ScoreBoard from "./scoreBoard";
-import ScoreManager from "./scoreManager";
+import Game from "./pages/Game";
+import EndGame from './pages/EndGame';
+import GameSetting from './pages/GameSetting';
+import GameMenu from './pages/GameMenu';
 import {scoreListContext} from "./context/scorelist";
 import {playerListContext} from "./context/playerlist";
 import {roundContext} from "./context/round";
 import {roundNumberContext} from "./context/roundNumber";
 import {quilleNumberContext} from "./context/quilleNumber";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import './App.css';
 
@@ -26,8 +29,14 @@ function App() {
       <roundContext.Provider value={{round:round,setRound:setRound}}>
         <playerListContext.Provider value={{playerList:playerList,setPlayerList:setPlayerList}}>
           <scoreListContext.Provider value={{scoreList: scoreList, setScoreList: setScoreList}}>
-            <ScoreBoard />
-            <ScoreManager />
+            <BrowserRouter>
+              <Routes>     
+                <Route index element={<GameMenu />} />
+                <Route path="Game" element={<Game/>}/>
+                <Route path="Endgame" element={<EndGame/>} />
+                <Route path="GameSetting" element={<GameSetting />} />                 
+              </Routes>
+            </BrowserRouter>              
           </scoreListContext.Provider>
         </playerListContext.Provider>
       </roundContext.Provider>  
