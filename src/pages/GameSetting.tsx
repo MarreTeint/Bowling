@@ -1,7 +1,11 @@
 
-
+import { StartMenu } from "../startMenu";
 const GameSetting = () => {
-    return <h1>GameSetting</h1>;
+    return (
+    <div>
+      <h1>GameSetting</h1>
+      <StartMenu />
+    </div>);
    
   };
   
