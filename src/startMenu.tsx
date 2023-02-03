@@ -92,7 +92,7 @@ export const StartMenu = () => {
                     </div>
                 </div>
             </form>
-            <Link to="../Game"><button className="btn btn-light">Début de la partie</button></Link>
+            <Link to="../Game"><button className="btn btn-light btn-outline-dark">Début de la partie</button></Link>
         </div>
     )
 }

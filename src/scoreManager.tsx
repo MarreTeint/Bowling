@@ -39,7 +39,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
         <div className="scoreManager col-4 mx-auto">
             Au tour de {playerList[player]}<br></br>
             Tour n°{round} | Lance n°{lance + 1}<br></br>
-            <div className="input-group mb-3">
+            <div className="input-group mb-3 mt-3">
                 <span className="input-group-text" id="basic-addon1">🎳</span>
                 <input type="number" className="form-control" placeholder="Nombre de quilles tombées" id="quilles" min="0" max={quilleNumber}  
                 onKeyUp={event=>{
@@ -50,7 +50,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
                 }
                 }/>
             </div>
-            <button id="quillesupdate" onClick={() => {
+            <button className="btn btn-light btn-outline-dark mb-3" id="quillesupdate" onClick={() => {
                 var score = document.getElementById("quilles") as HTMLSelectElement;
                 var scoreValue = parseInt(score.value);
                 score.value = "";
