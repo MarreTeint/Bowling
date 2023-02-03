@@ -24,7 +24,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
     const updateScore = (player: number, lance: number, score: number) => {
         var newScoreList = [...scoreList];
-        if (score === quilleNumber && (lance % 2 === 0 || lance === 19)) {
+        if (score === quilleNumber && (lance % 2 === 0 || (round === roundNumber && (lance%3 === 0 || (lance%3 === 1 && newScoreList[player][lance-1] === 'X') || (lance%3 === 2 && (newScoreList[player][lance-1] === 'X' || newScoreList[player][lance-1] === '/' || newScoreList[player][lance-2] === 'X')))))){
             newScoreList[player][lance] = 'X';
         } else if (score + +scoreList[player][lance - 1] === quilleNumber && (lance % 2) === 1) {
             newScoreList[player][lance] = '/';
