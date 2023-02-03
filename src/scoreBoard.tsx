@@ -37,11 +37,11 @@ const  ScoreBoard = () => {
                            
                 </thead>
                 <tbody>
-                    <tr className="rounds"><td className="black"></td>
+                    <tr className="rounds"><td className="bg-dark"></td>
                     {TourPrint()}
 
                
-                    <td className="black"></td></tr>
+                    <td className="bg-dark"></td></tr>
                     {printPlayerScoreBoard()}
                 </tbody>
             </table>
