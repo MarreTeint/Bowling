@@ -3,8 +3,8 @@ import {scoreListContext} from "./context/scorelist";
 import {playerListContext} from "./context/playerlist";
 import {roundContext} from "./context/round";
 import {roundNumberContext} from "./context/roundNumber";
-//import {quilleNumberContext} from "./context/quilleNumber";
-import scoreProcess from "./scoreProcess";
+import {quilleNumberContext} from "./context/quilleNumber";
+import ScoreProcess from "./scoreProcess";
 
 const  ScoreBoard = () => {
     const { scoreList} = useContext(scoreListContext);
@@ -34,7 +34,7 @@ const  ScoreBoard = () => {
                     <tr className="rounds"><td className="black"></td>
                     {TourPrint()}
 
-                    {/* <td colSpan={2}>Tour n°1</td><td colSpan={2}>Tour n°2</td><td colSpan={2}>Tour n°3</td><td colSpan={2}>Tour n°4</td><td colSpan={2}>Tour n°5</td><td colSpan={2}>Tour n°6</td><td colSpan={2}>Tour n°7</td><td colSpan={2}>Tour n°8</td><td colSpan={2}>Tour n°9</td><td colSpan={3}>Tour n°10</td> */}
+               
                     <td className="black"></td></tr>
                     <PLayerSCoreBoards PlayerName={playerList[0]} PlayerSCore={scoreList[0]} round={round}/>
                     <PLayerSCoreBoards PlayerName={playerList[1]} PlayerSCore={scoreList[1]} round={round}/>
@@ -55,6 +55,8 @@ const  ScoreBoard = () => {
 export function PLayerSCoreBoards(props: any) {
     const PlayerSCore = props.PlayerSCore;
     const PlayerName = props.PlayerName;
+    const {quilleNumber} = useContext(quilleNumberContext);
+    const {roundNumber} = useContext(roundNumberContext);
 
    
     const Score = PlayerSCore.map((score: any,index:any) =>
@@ -65,7 +67,7 @@ export function PLayerSCoreBoards(props: any) {
         <tr className="scoreboard">
             <td className="blackText">{PlayerName}</td>
             {Score}
-            <td>{scoreProcess(PlayerSCore)}</td> 
+            <td>{ScoreProcess(PlayerSCore,quilleNumber,roundNumber)}</td> 
           
         </tr>
     );   

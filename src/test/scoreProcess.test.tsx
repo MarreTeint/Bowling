@@ -1,9 +1,10 @@
 import '@testing-library/react';
 import {scoreFromPins,ScoreListToScore} from "../scoreProcess";
 
-test('test du systeme de calcul de score', () => {
+
+test('du systeme de calcul de score', () => {
   //create an array of score
-  const score:number[] = new Array(10);
+
   
   const rolls1:number[] = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10];
   const expected_score1:number[] = [30, 60, 90, 120, 150, 180, 210, 240, 270, 300];
@@ -30,26 +31,31 @@ test('test du systeme de calcul de score', () => {
   const expected_score8:number[] = [9, 18, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN];
 
 
-  expect(scoreFromPins(rolls1)).toStrictEqual(expected_score1);
-  expect(scoreFromPins(rolls2)).toStrictEqual(expected_score2);
-  expect(scoreFromPins(rolls3)).toStrictEqual(expected_score3);
-  expect(scoreFromPins(rolls4)).toStrictEqual(expected_score4);
-  expect(scoreFromPins(rolls5)).toStrictEqual(expected_score5);
-  expect(scoreFromPins(rolls6)).toStrictEqual(expected_score6);
-  expect(scoreFromPins(rolls7)).toStrictEqual(expected_score7);
-  expect(scoreFromPins(rolls8)).toStrictEqual(expected_score8);
+  expect(scoreFromPins(rolls1,10,10)).toStrictEqual(expected_score1);
+  expect(scoreFromPins(rolls2,10,10)).toStrictEqual(expected_score2);
+  expect(scoreFromPins(rolls3,10,10)).toStrictEqual(expected_score3);
+  expect(scoreFromPins(rolls4,10,10)).toStrictEqual(expected_score4);
+  expect(scoreFromPins(rolls5,10,10)).toStrictEqual(expected_score5);
+  expect(scoreFromPins(rolls6,10,10)).toStrictEqual(expected_score6);
+  expect(scoreFromPins(rolls7,10,10)).toStrictEqual(expected_score7);
+  expect(scoreFromPins(rolls8,10,10)).toStrictEqual(expected_score8);
 
 
 });
 
-test('test du convertissuer', () => {
+test('du convertissuer', () => {
   const scoreTest1        = ['X', ' ', 'X', ' ', 'X', ' ', 'X', ' ', 'X', ' ', 'X', ' ', 'X', ' ', 'X', ' ', 'X', ' ', 'X', 'X', 'X'];
-  const expectedScore1    = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]
+  const expectedScore1    = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10];
 
-  expect(ScoreListToScore(scoreTest1)).toStrictEqual(expectedScore1);
+ 
+
+
+  
+
+  expect(ScoreListToScore(scoreTest1,10)).toStrictEqual(expectedScore1);
 
   const scoreTest3       = [0, '/', 'X', ' ', 'X', ' ', 'X', ' ', 'X', ' ', 'X', ' ', 'X', ' ', 'X', ' ', 'X', ' ', 'X', 'X', 'X'];
   const expectedScore3   =  [0,10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10];
 
-  expect(ScoreListToScore(scoreTest3)).toStrictEqual(expectedScore3);
+  expect(ScoreListToScore(scoreTest3,10)).toStrictEqual(expectedScore3);
 })
