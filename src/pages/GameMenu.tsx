@@ -3,8 +3,8 @@ const GameMenu = () => {
     return (
     <div id="GameChoice">
       <h1>GameMenu</h1>
-      <button > <Link to="GameSetting">Partie personnalisée</Link></button>
-      <button > <Link to="Game">Partie Rapide</Link></button>
+      <Link to="GameSetting"><button > Partie personnalisée</button></Link>
+      <Link to="Game"><button > Partie Rapide</button></Link>
       <Outlet />
 
     </div>

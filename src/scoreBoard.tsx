@@ -16,6 +16,13 @@ const  ScoreBoard = () => {
         console.log("ScoreList has been updated")
     }, [scoreList, playerList, round])
   
+    function printPlayerScoreBoard(){
+        let players = [];
+        for(var i=0; i<playerList.length; i++){
+            players.push(<PLayerSCoreBoards PlayerName={playerList[i]} PlayerSCore={scoreList[i]} round={round}/>);
+        }
+        return players;
+    }
 
     return (
         <div className="scoreboard">
@@ -36,8 +43,7 @@ const  ScoreBoard = () => {
 
                     {/* <td colSpan={2}>Tour n°1</td><td colSpan={2}>Tour n°2</td><td colSpan={2}>Tour n°3</td><td colSpan={2}>Tour n°4</td><td colSpan={2}>Tour n°5</td><td colSpan={2}>Tour n°6</td><td colSpan={2}>Tour n°7</td><td colSpan={2}>Tour n°8</td><td colSpan={2}>Tour n°9</td><td colSpan={3}>Tour n°10</td> */}
                     <td className="black"></td></tr>
-                    <PLayerSCoreBoards PlayerName={playerList[0]} PlayerSCore={scoreList[0]} round={round}/>
-                    <PLayerSCoreBoards PlayerName={playerList[1]} PlayerSCore={scoreList[1]} round={round}/>
+                    {printPlayerScoreBoard()}
                 </tbody>
             </table>
         </div>
