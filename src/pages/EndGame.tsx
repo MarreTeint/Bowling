@@ -2,14 +2,19 @@ import ScoreBoard from "../scoreBoard";
 import {scoreListContext} from "../context/scorelist";
 import {playerListContext} from "../context/playerlist";
 import scoreProcess from "../scoreProcess";
-import React from "react";
+import {roundNumberContext} from "../context/roundNumber";
+import {quilleNumberContext} from "../context/quilleNumber";
+import React,{useContext} from "react";
 const EndGame = () => {
+  const {quilleNumber} = useContext(quilleNumberContext);
+  const {roundNumber} = useContext(roundNumberContext);
+  
 
  let classement = [];
   const {scoreList} = React.useContext(scoreListContext);
   const {playerList} = React.useContext(playerListContext);
   for (let index = 0; index < playerList.length; index++) {
-    classement[index] = [playerList[index], scoreProcess(scoreList[index])];
+    classement[index] = [playerList[index], scoreProcess(scoreList[index],quilleNumber,roundNumber)];
     
   }
   classement.sort((a, b) => +b[1] - +a[1]);
