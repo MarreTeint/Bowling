@@ -2,7 +2,7 @@ import { Outlet, Link } from "react-router-dom";
 const GameMenu = () => {
     return (
     <div id="GameChoice">
-        <h1>Game Menu</h1>
+      <h1>Menu</h1>
         <div className="d-flex justify-content-center mb-3 mt-3">
           <Link to="GameSetting"><button className="btn btn-light btn-outline-primary">Partie personnalisée</button></Link>
           <Outlet />

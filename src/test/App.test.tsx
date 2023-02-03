@@ -4,6 +4,6 @@ import App from '../App';
 
 test("sur l'application", () => {
   render(<App />);
-  const linkElement = screen.getByText('Game Menu');
+  const linkElement = screen.getByText('Menu');
   expect(linkElement).toBeInTheDocument();
 });

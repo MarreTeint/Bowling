@@ -4,11 +4,12 @@ import {playerListContext} from "../context/playerlist";
 import scoreProcess from "../scoreProcess";
 import {roundNumberContext} from "../context/roundNumber";
 import {quilleNumberContext} from "../context/quilleNumber";
+
 import React,{useContext} from "react";
 const EndGame = () => {
-
   const {quilleNumber} = useContext(quilleNumberContext);
   const {roundNumber} = useContext(roundNumberContext);
+  
 
  let classement = [];
   const {scoreList} = React.useContext(scoreListContext);
@@ -21,7 +22,7 @@ const EndGame = () => {
 
     return (
 <div>
-<h1>End of the game</h1>
+<h1>Fin de partie</h1>
 
 <ScoreBoard />
 <div>
@@ -29,7 +30,7 @@ const EndGame = () => {
   <table>
     <thead>
       <tr>
-        <th>Player</th>
+        <th>Joueur</th>
         <th>Score</th>
       </tr>
     </thead>

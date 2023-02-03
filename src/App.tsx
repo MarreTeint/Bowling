@@ -19,7 +19,7 @@ function App() {
     const [round, setRound]= React.useState(1);
     const [quilleNumber, setquilleNumber]= React.useState(10);
     const [roundNumber, setRoundNumber]= React.useState(10);
-    const [playerList, setPlayerList]= React.useState(["Player 1", "Player 2"]);
+    const [playerList, setPlayerList]= React.useState(["Joueur 1", "Joueur 2"]);
 
 
     return (    
