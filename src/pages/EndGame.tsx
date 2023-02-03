@@ -4,11 +4,12 @@ import {playerListContext} from "../context/playerlist";
 import scoreProcess from "../scoreProcess";
 import {roundNumberContext} from "../context/roundNumber";
 import {quilleNumberContext} from "../context/quilleNumber";
+
 import React,{useContext} from "react";
 const EndGame = () => {
-
   const {quilleNumber} = useContext(quilleNumberContext);
   const {roundNumber} = useContext(roundNumberContext);
+  
 
  let classement = [];
   const {scoreList} = React.useContext(scoreListContext);
