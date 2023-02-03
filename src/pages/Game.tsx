@@ -14,7 +14,7 @@ function Game() {
     <div className="Game">        
         <ScoreBoard />
         <ScoreManager />
-        <button><Link to="../Endgame">Fin  de partie</Link></button>       
+        <Link to="../Endgame"><button>Fin  de partie</button></Link>       
     </div>
   );
 }
