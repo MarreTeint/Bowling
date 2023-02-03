@@ -21,7 +21,7 @@ const EndGame = () => {
 
     return (
 <div>
-<h1>EndGame</h1>
+<h1>End of the game</h1>
 
 <ScoreBoard />
 <div>
