@@ -59,7 +59,7 @@ import { useNavigate } from "react-router-dom";
                 score.value="-1";
                 var numlance = 2*round-2+lance;
             
-                if(scoreValue == -1){
+                if(scoreValue === -1){
                     alert("Veuillez choisir le nombre de quilles tombées");
                     return;
                 }else if(round < roundNumber && lance === 1 && scoreValue + +scoreList[player][numlance-1] <= quilleNumber || (round === roundNumber )|| (lance === 0)){
