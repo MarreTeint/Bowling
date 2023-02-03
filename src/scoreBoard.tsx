@@ -30,8 +30,8 @@ const  ScoreBoard = () => {
                 <thead>
 
                     <tr>
-                    <td className="blackText">Player </td>
-                    <td className="blackText" colSpan={roundNumber*2+1}> Score Board</td>
+                    <td className="blackText">Joueur </td>
+                    <td className="blackText" colSpan={roundNumber*2+1}>Tableau des Scores</td>
                     <td className="blackText">Total </td>
                     </tr>
                            
