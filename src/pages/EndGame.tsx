@@ -22,7 +22,7 @@ const EndGame = () => {
 
     return (
 <div>
-<h1>EndGame</h1>
+<h1>Fin de partie</h1>
 
 <ScoreBoard />
 <div>
@@ -30,7 +30,7 @@ const EndGame = () => {
   <table>
     <thead>
       <tr>
-        <th>Player</th>
+        <th>Joueur</th>
         <th>Score</th>
       </tr>
     </thead>

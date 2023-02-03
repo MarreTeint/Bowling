@@ -2,7 +2,7 @@ import { Outlet, Link } from "react-router-dom";
 const GameMenu = () => {
     return (
     <div id="GameChoice">
-      <h1>GameMenu</h1>
+      <h1>Menu</h1>
       <Link to="GameSetting"><button > Partie personnalisée</button></Link>
       <Link to="Game"><button > Partie Rapide</button></Link>
       <Outlet />
