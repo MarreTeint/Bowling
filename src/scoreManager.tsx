@@ -1,5 +1,4 @@
 /* eslint-disable no-mixed-operators */
-<<<<<<< Updated upstream
 import React, { useContext ,useEffect} from "react";
 import {scoreListContext} from "./context/scorelist";
 import {playerListContext} from "./context/playerlist";
@@ -7,26 +6,13 @@ import {roundContext} from "./context/round";
 import {quilleNumberContext} from "./context/quilleNumber";
 import {roundNumberContext} from "./context/roundNumber";
 import { useNavigate } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 
  const ScoreManager = () => {
     let navigate = useNavigate();
     const { scoreList,setScoreList} = useContext(scoreListContext);
     const { playerList} = useContext(playerListContext);
     const { round,setRound} = useContext(roundContext);
-=======
-import React, { useContext, useEffect } from "react";
-import { scoreListContext } from "./context/scorelist";
-import { playerListContext } from "./context/playerlist";
-import { roundContext } from "./context/round";
-import { quilleNumberContext } from "./context/quilleNumber";
-import { roundNumberContext } from "./context/roundNumber";
-import "bootstrap/dist/css/bootstrap.min.css";
-
-const ScoreManager = () => {
-    const { scoreList, setScoreList } = useContext(scoreListContext);
-    const { playerList } = useContext(playerListContext);
-    const { round, setRound } = useContext(roundContext);
->>>>>>> Stashed changes
     const [lance, setLance] = React.useState(0);
     const [player, setPlayer] = React.useState(0);
     const { quilleNumber } = useContext(quilleNumberContext);
@@ -48,17 +34,6 @@ const ScoreManager = () => {
         setScoreList(newScoreList);
         console.log(scoreList);
     }
-
-    const printQuilleNumber = () => {
-        let options = [];
-        for (var i = 0; i <= quilleNumber; i++) {
-            options.push(<option value={i}>{i}</option>);
-        }
-        return options;
-    }
-
-
-
 
     return (
         <div className="scoreManager col-4 mx-auto">
@@ -112,12 +87,8 @@ const ScoreManager = () => {
                             document.getElementById("quilles")?.remove(); //end game
                             document.getElementById("quillesupdate")?.remove(); //end game
                             setLance(0);
-<<<<<<< Updated upstream
                             navigate("../Endgame");
                         }else if (lance === 2){
-=======
-                        } else if (lance === 2) {
->>>>>>> Stashed changes
                             setPlayer(1);
                             setLance(0);
                         }

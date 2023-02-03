@@ -19,13 +19,8 @@ const  ScoreBoard = () => {
 
     return (
         <div className="scoreboard">
-<<<<<<< Updated upstream
-           
-            <table>
-=======
             {scoreList}
             <table className="table table-bordered">
->>>>>>> Stashed changes
                 <thead>
 
                     <tr>
