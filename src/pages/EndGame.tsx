@@ -6,6 +6,7 @@ import {roundNumberContext} from "../context/roundNumber";
 import {quilleNumberContext} from "../context/quilleNumber";
 
 import React,{useContext} from "react";
+import { Link } from "react-router-dom";
 const EndGame = () => {
   const {quilleNumber} = useContext(quilleNumberContext);
   const {roundNumber} = useContext(roundNumberContext);
@@ -46,7 +47,7 @@ const EndGame = () => {
 
 </div>
 
-
+<Link to="../."><button className="btn btn-light btn-outline-primary mt-3">Rejouer</button></Link>
 </div>
    
 
