@@ -1,4 +1,4 @@
-import ScoreManger from "../scoreManager";
+import Game from "../pages/Game";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { render, screen ,fireEvent} from '@testing-library/react';
 //import React, { useContext,useEffect } from "react";
@@ -13,7 +13,7 @@ import {quilleNumberContext} from "../context/quilleNumber";
 
 
     
-    test("sur scoremanager pour nombre incorrect de quille entrée", () => {
+    test("sur scoremanager strike", () => {
     
        
         const alertMock = jest.fn();
@@ -22,12 +22,12 @@ import {quilleNumberContext} from "../context/quilleNumber";
         render(
         <roundNumberContext.Provider value={{roundNumber:10,setroundNumber:()=>{}}}>
         <quilleNumberContext.Provider value={{quilleNumber:10,setquilleNumber:()=>{}}}>
-        <roundContext.Provider value={{round:10,setRound:()=>{}}}>
+        <roundContext.Provider value={{round:0,setRound:()=>{}}}>
           <playerListContext.Provider value={{playerList:["Player 1", "Player 2"] ,setPlayerList:()=>{}}}>
-            <scoreListContext.Provider value={{scoreList: [[" ", " ", " ", " ", " ", " ", "8", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "],[" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "]], setScoreList: ()=>{}}}>
+            <scoreListContext.Provider value={{scoreList: [[" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "],[" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "]], setScoreList: ()=>{}}}>
             <BrowserRouter>
               <Routes>
-                <Route index element={<ScoreManger />} />                        
+                <Route index element={<Game />} />                        
               </Routes>
             </BrowserRouter>                
             </scoreListContext.Provider>
@@ -38,30 +38,16 @@ import {quilleNumberContext} from "../context/quilleNumber";
     
        
       );
-  //fireEvent.click(screen.getByText('8'));
-  //input the number 10 in the input field of class form-control and click on the button with the text Valider 
-    fireEvent.change(screen.getByPlaceholderText("Nombre de quilles tombées"), { target: { value: '9' } });
+
+    let quilleInput = screen.getByPlaceholderText("Nombre de quilles tombées");
+    fireEvent.change(quilleInput, { target: { value: '2' } });
     fireEvent.click(screen.getByText('Valider'));
 
-    fireEvent.change(screen.getByPlaceholderText("Nombre de quilles tombées"), { target: { value: '10' } });
-    fireEvent.click(screen.getByText('Valider'));
-
-    //expect(alertMock).toHaveBeenCalledWith('Score invalide');
-
-
-    
-    
     
     });
 
 
-    test('test alert() function', () => {
-        const alertMock = jest.fn();
-        window.alert = alertMock;
-        const { getByText } = render(<button onClick={() => alert('Alert triggered')}>Click me</button>);
-        fireEvent.click(screen.getByText('Click me'));
-        expect(alertMock).toHaveBeenCalledWith('Alert triggered');
-      });
+
 
 
 
