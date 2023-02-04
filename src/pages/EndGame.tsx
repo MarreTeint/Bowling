@@ -4,7 +4,9 @@ import {playerListContext} from "../context/playerlist";
 import scoreProcess from "../scoreProcess";
 import {roundNumberContext} from "../context/roundNumber";
 import {quilleNumberContext} from "../context/quilleNumber";
+
 import React,{useContext} from "react";
+import { Link } from "react-router-dom";
 const EndGame = () => {
   const {quilleNumber} = useContext(quilleNumberContext);
   const {roundNumber} = useContext(roundNumberContext);
@@ -15,14 +17,13 @@ const EndGame = () => {
   const {playerList} = React.useContext(playerListContext);
   for (let index = 0; index < playerList.length; index++) {
     classement[index] = [playerList[index], scoreProcess(scoreList[index],quilleNumber,roundNumber)];
-    
   }
   classement.sort((a, b) => +b[1] - +a[1]);
 
 
     return (
 <div>
-<h1>EndGame</h1>
+<h1>Fin de partie</h1>
 
 <ScoreBoard />
 <div>
@@ -30,7 +31,7 @@ const EndGame = () => {
   <table>
     <thead>
       <tr>
-        <th>Player</th>
+        <th>Joueur</th>
         <th>Score</th>
       </tr>
     </thead>
@@ -46,7 +47,7 @@ const EndGame = () => {
 
 </div>
 
-
+<Link to="../."><button className="btn btn-light btn-outline-primary mt-3">Rejouer</button></Link>
 </div>
    
 
